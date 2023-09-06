@@ -1,0 +1,2 @@
+store last location into datastore to get weather data more quickly
+after getting location data successfully, if current location different from last location, get another weather data.
