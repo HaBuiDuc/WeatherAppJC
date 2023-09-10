@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
 private val itemList = listOf(
     NavigationItem(
         title = "Add city",
-        itemIcon = Icons.Filled.Add
+        itemIcon = Icons.Filled.Map
     ) {navController ->
         navController.navigate(Screen.CityScreen.route)
     },
@@ -45,6 +45,7 @@ private val itemList = listOf(
     }
 )
 
+// Navigation drawer
 @Composable
 fun Drawer(
     drawerState: DrawerState,
@@ -57,7 +58,7 @@ fun Drawer(
             modifier = Modifier.fillMaxHeight(0.6f)
         ) {
             Column {
-                itemList.forEachIndexed { _, item ->
+                itemList.forEach { item ->
                     NavigationDrawerItem(
                         label = {
                             Text(

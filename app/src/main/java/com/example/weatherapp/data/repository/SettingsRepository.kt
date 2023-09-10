@@ -10,7 +10,8 @@ import com.example.weatherapp.data.MeasureUnit
 import kotlinx.coroutines.flow.first
 import kotlin.IllegalStateException
 
-class SettingsRepository private constructor(context: Context) {
+class SettingsRepository private constructor() {
+    // Default setting value
     private val preferencesDefaults = mutableMapOf(
         WIND_SPEED_UNIT to MeasureUnit.KmPerHour.unit,
         VISIBILITY_UNIT to MeasureUnit.Km.unit,
@@ -20,6 +21,7 @@ class SettingsRepository private constructor(context: Context) {
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_settings")
 
+    // Save setting to datastore
     suspend fun saveSetting(context: Context, data: Int, settingKey: String) {
         val dataStoreKey = intPreferencesKey(settingKey)
         context.dataStore.edit { settings ->
@@ -27,6 +29,7 @@ class SettingsRepository private constructor(context: Context) {
         }
     }
 
+    // Get setting from datastore
     suspend fun getSetting(context: Context, settingKey: String): Int? {
         val dataStoreKey = intPreferencesKey(settingKey)
         val preferences = context.dataStore.data.first()
@@ -43,12 +46,12 @@ class SettingsRepository private constructor(context: Context) {
         const val PRESSURE_UNIT = "pressure_unit"
         const val TEMPERATURE_UNIT = "temperature_unit"
 
-
+        // Create singleton class
         private var INSTANCE: SettingsRepository? = null
 
-        fun initialize(context: Context) {
+        fun initialize() {
             if (INSTANCE == null) {
-                INSTANCE = SettingsRepository(context)
+                INSTANCE = SettingsRepository()
             }
         }
 

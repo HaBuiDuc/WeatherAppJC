@@ -44,7 +44,6 @@ fun DetailView(
     settingsValue: Map<String, Int>
 ) {
     val context = LocalContext.current
-
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier

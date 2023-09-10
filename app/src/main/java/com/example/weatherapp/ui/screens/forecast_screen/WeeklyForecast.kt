@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.data.getIconWeather
+import com.example.weatherapp.data.getWeatherIcon
 import com.example.weatherapp.data.model.Forecast
 import com.example.weatherapp.data.model.ForecastDay
 import com.example.weatherapp.ui.theme.SteelBlue
@@ -68,13 +68,12 @@ fun WeeklyItem(
         }
         Row {
             val conditionCode = forecastDay.day.condition.code
-            val iconId = getIconWeather(conditionCode, 1)
+            val iconId = getWeatherIcon(conditionCode, 1)
             Image(
                 painter = painterResource(id = iconId),
                 contentDescription = stringResource(id = R.string.image_des),
                 modifier = Modifier.size(40.dp)
             )
-//            Text(text = )
         }
     }
 }

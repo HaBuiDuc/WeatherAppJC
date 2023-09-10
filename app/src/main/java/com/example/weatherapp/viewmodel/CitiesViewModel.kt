@@ -49,12 +49,7 @@ class CitiesViewModel : ViewModel() {
             query = query
         ) { response ->
             _citiesState.value = _citiesState.value.copy(suggestionItems = response.autocompletePredictions)
-            for (prediction in response.autocompletePredictions) {
-                Log.i(TAG, prediction.placeId)
-                Log.i(TAG, prediction.getPrimaryText(null).toString())
-                Log.i(TAG, prediction.getSecondaryText(null).toString())
 
-            }
         }
     }
 

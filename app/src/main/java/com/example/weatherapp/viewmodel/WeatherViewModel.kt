@@ -34,21 +34,34 @@ class WeatherViewModel : ViewModel() {
                 citiesRepository.getLocations(context).collect {
                     val locationList = it.toMutableList()
                     locationList.add(0, currentLocation.getLocationValue())
-                    for (index in weatherData.size until locationList.size) {
-                        val value = locationList[index]
-                        val data = async {
-                            repository.getWeatherData(value)
+                    if (weatherData.size < locationList.size) {
+                        for (index in weatherData.size until locationList.size) {
+                            val value = locationList[index]
+                            val data = async {
+                                repository.getWeatherData(value)
+                            }
+                            weatherData.add(data)
                         }
-                        weatherData.add(data)
+                        _weatherState.value = _weatherState.value.copy(
+                            weatherData = weatherData.awaitAll(),
+                            isInitialize = true
+                        )
+                    } else if (weatherData.size > locationList.size){
+                        weatherData.clear()
+                        for (index in 0 until locationList.size) {
+                            val value = locationList[index]
+                            val data = async {
+                                repository.getWeatherData(value)
+                            }
+                            weatherData.add(data)
+                        }
+                        _weatherState.value = _weatherState.value.copy(
+                            weatherData = weatherData.awaitAll()
+                        )
                     }
-                    _weatherState.value = _weatherState.value.copy(
-                        weatherData = weatherData.awaitAll(),
-                        isInitialize = true
-                    )
                 }
             }
             _weatherState.value.isLoading = false
-            Log.d(TAG, "getWeatherData: ")
         }
     }
 

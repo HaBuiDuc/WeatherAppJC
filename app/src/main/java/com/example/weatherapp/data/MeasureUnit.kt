@@ -3,6 +3,7 @@ package com.example.weatherapp.data
 import androidx.annotation.StringRes
 import com.example.weatherapp.R
 
+// List of measure unit string id
 enum class MeasureUnit(
     @StringRes val unit: Int
 ) {

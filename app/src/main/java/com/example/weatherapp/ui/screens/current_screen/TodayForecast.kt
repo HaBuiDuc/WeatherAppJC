@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.data.getIconWeather
+import com.example.weatherapp.data.getWeatherIcon
 import com.example.weatherapp.data.model.Hour
 import com.example.weatherapp.ui.theme.TextNormalStyle
 import com.example.weatherapp.ui.theme.TextSemiBoldStyle
@@ -103,7 +103,7 @@ private fun TodayForecastItem(
             Spacer(modifier = Modifier.height(4.dp))
 
             val conditionCode = weatherByHour.condition.code
-            val iconId = getIconWeather(conditionCode, weatherByHour.isDay)
+            val iconId = getWeatherIcon(conditionCode, weatherByHour.isDay)
             Image(
                 painter = painterResource(id = iconId),
                 contentDescription = stringResource(id = R.string.image_des),
@@ -118,7 +118,6 @@ private fun TodayForecastItem(
             Text(
                 text = hourTemp,
                 style = TextSemiBoldStyle,
-//                color = Color.White
             )
         }
     }

@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.data.getIconWeather
+import com.example.weatherapp.data.getWeatherIcon
 import com.example.weatherapp.data.model.Current
 import com.example.weatherapp.ui.screens.shared.StatusItemData
 import com.example.weatherapp.ui.screens.shared.WeatherStatus
@@ -32,11 +32,6 @@ import com.example.weatherapp.ui.theme.TextNormalStyle
 import com.example.weatherapp.ui.theme.TextSemiBoldStyle
 import com.example.weatherapp.util.getTemp
 import com.example.weatherapp.util.getWindSpeed
-
-@Preview
-@Composable
-fun GeneralViewPreview() {
-}
 
 @Composable
 fun GeneralView(
@@ -59,7 +54,7 @@ fun GeneralView(
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             val conditionCode = currentWeather.condition.code
-            val iconCode = getIconWeather(conditionCode, currentWeather.isDay)
+            val iconCode = getWeatherIcon(conditionCode, currentWeather.isDay)
             Image(
                 painter = painterResource(id = iconCode),
                 contentDescription = stringResource(id = R.string.image_des),

@@ -9,8 +9,8 @@ import com.google.android.libraries.places.api.Places
 class WeatherApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        SettingsRepository.initialize(this)
+        SettingsRepository.initialize()
         CitiesRepository.initialize()
-        Places.initialize(this, googlePlaceApiKey);
+        Places.initialize(this, googlePlaceApiKey)
     }
 }

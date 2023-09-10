@@ -8,11 +8,13 @@ import retrofit2.http.Query
 
 interface WeatherApi {
 
+    // Get 1 day forecast, this data include current weather and forecast of the day
     @GET("forecast.json?key=$weatherApiKey&days=1")
     suspend fun getWeatherData(
         @Query("q") q: String
     ): WeatherDataDaily
 
+    // Get weekly forecast
     @GET("forecast.json?key=$weatherApiKey&days=3")
     suspend fun getWeatherForecast(
         @Query("q") q: String

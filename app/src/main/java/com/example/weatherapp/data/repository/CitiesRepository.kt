@@ -16,6 +16,7 @@ import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRe
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import java.text.Normalizer
 
 class CitiesRepository private constructor() {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "location_list")
@@ -23,6 +24,7 @@ class CitiesRepository private constructor() {
 
     private val token: AutocompleteSessionToken = AutocompleteSessionToken.newInstance()
 
+    // Get prediction of place, use for location search
     fun getPrediction(
         context: Context,
         query: String,
@@ -30,7 +32,7 @@ class CitiesRepository private constructor() {
     ) {
         val request =
             FindAutocompletePredictionsRequest.builder()
-                .setTypesFilter(listOf(PlaceTypes.CITIES))
+                .setTypesFilter(listOf(PlaceTypes.CITIES)) // Place type return
                 .setSessionToken(token)
                 .setQuery(query)
                 .build()
@@ -45,25 +47,34 @@ class CitiesRepository private constructor() {
             }
     }
 
+    // Save location to location list datastore
     suspend fun saveLocation(context: Context, data: String) {
+        // Convert accent letter to normal letter
+        val newData = Normalizer
+            .normalize(data, Normalizer.Form.NFD)
+            .replace("\\p{M}".toRegex(), "")
         context.dataStore.edit { preference ->
-            preference[dataStoreKey] = (preference[dataStoreKey] ?: emptySet()) + data
+            preference[dataStoreKey] = (preference[dataStoreKey] ?: emptySet()) + newData
         }
     }
 
+    // Delete location from location list datastore
     suspend fun deleteLocation(context: Context, data: String) {
         context.dataStore.edit { preference ->
             preference[dataStoreKey] = (preference[dataStoreKey] ?: emptySet()) - data
         }
     }
 
+    // Get location list from location datastore
     fun getLocations(context: Context): Flow<Set<String>> {
         return context.dataStore.data.map { it[dataStoreKey] ?: emptySet() }
     }
 
     companion object {
+        // Key of datastore
         private const val LOCATION_KEY = "location_key"
 
+        // Create a singleton class
         private var INSTANCE: CitiesRepository? = null
 
         fun initialize() {

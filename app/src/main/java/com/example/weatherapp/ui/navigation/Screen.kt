@@ -4,6 +4,7 @@ const val LOCATION_KEY = "location_key"
 sealed class Screen(val route: String) {
     object WeatherScreen: Screen("weather_screen")
     object ForecastScreen: Screen("forecast_screen/{$LOCATION_KEY}") {
+        // Pass argument function
         fun passLocation(data: String): String {
             return this.route.replace(
                 oldValue = "{$LOCATION_KEY}",

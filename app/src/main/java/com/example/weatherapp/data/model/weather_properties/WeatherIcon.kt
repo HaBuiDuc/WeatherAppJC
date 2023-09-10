@@ -3,6 +3,7 @@ package com.example.weatherapp.data.model.weather_properties
 import androidx.annotation.StringRes
 import com.example.weatherapp.R
 
+// List of weather icon string id
 enum class WeatherIcon(
     @StringRes val iconId: Int
 ) {

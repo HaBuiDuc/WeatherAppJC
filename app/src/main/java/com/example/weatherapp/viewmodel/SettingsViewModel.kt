@@ -27,7 +27,6 @@ class SettingsViewModel : ViewModel() {
             setState(pressureUnit, SettingsRepository.PRESSURE_UNIT)
             setState(temperatureUnit, SettingsRepository.TEMPERATURE_UNIT)
         }
-        Log.d("This is a log", "getSettings: ")
     }
 
     fun saveSetting(context: Context, data: Int, settingKey: String) {

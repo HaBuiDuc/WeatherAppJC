@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.data.getIconWeather
+import com.example.weatherapp.data.getWeatherIcon
 import com.example.weatherapp.data.model.Day
 import com.example.weatherapp.ui.screens.shared.StatusItemData
 import com.example.weatherapp.ui.screens.shared.WeatherStatus
@@ -120,7 +120,7 @@ fun WeatherCondition(
     val context = LocalContext.current
     Row {
         val conditionCode = weatherDay.condition.code
-        val iconId = getIconWeather(conditionCode, 1)
+        val iconId = getWeatherIcon(conditionCode, 1)
         Image(
             painter = painterResource(id = iconId),
             contentDescription = stringResource(id = R.string.image_des),
@@ -133,7 +133,6 @@ fun WeatherCondition(
             ) {
                 Text(
                     text = weatherDay.getMaxTemp(
-                        context = context,
                         settingsValue = settingsValue
                     ),
                     style = TextBoldStyle,

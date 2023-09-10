@@ -34,7 +34,7 @@ fun SearchView(
 ) {
     var isActive by remember {
         mutableStateOf(false)
-    }
+    } // SearchView active state
     SearchBar(
         query = locationQuery,
         onQueryChange = {

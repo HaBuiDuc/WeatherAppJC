@@ -163,7 +163,7 @@ fun CityItem(
 ) {
     var isToggle by remember {
         mutableStateOf(false)
-    }
+    } // Variable to check if an item is selected
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -227,7 +227,7 @@ fun SuggestionItem(
 ) {
     var isAdd by remember {
         mutableStateOf(false)
-    }
+    } // variable to check if an item is added to location list or not
     Row(
         modifier = Modifier
             .fillMaxWidth()

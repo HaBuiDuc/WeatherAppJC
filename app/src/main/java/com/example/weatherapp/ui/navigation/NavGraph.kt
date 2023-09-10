@@ -11,6 +11,7 @@ import com.example.weatherapp.ui.screens.current_screen.WeatherScreen
 import com.example.weatherapp.ui.screens.forecast_screen.ForecastScreen
 import com.example.weatherapp.ui.screens.settings_screen.SettingScreen
 
+// Create a navGraph for drawer navigation
 @Composable
 fun SetupNavGraph(
     navController: NavHostController
@@ -28,7 +29,7 @@ fun SetupNavGraph(
             route = Screen.ForecastScreen.route,
             arguments = listOf(navArgument(LOCATION_KEY) {
                 type = NavType.StringType
-            })
+            }) // Location argument from weather screen
         ) {
             it.arguments?.getString(LOCATION_KEY)
             ForecastScreen(navController)

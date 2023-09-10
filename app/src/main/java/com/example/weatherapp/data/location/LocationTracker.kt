@@ -11,6 +11,7 @@ import com.google.android.gms.location.LocationServices
 
 private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
+// Check access location permission
 fun checkLocationPermission(context: Context): Boolean {
     return if (ActivityCompat.checkSelfPermission(
             context,
@@ -34,6 +35,7 @@ fun checkLocationPermission(context: Context): Boolean {
     }
 }
 
+// Get current location listener
 fun getCurrentLocation(context: Context, onGetLocationSuccess: (Location) -> Unit) {
     fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
     checkLocationPermission(context)

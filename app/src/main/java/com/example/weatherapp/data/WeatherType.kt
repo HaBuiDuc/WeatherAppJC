@@ -2,7 +2,8 @@ package com.example.weatherapp.data
 
 import com.example.weatherapp.data.model.weather_properties.WeatherIcon.*
 
-fun getIconWeather(id: Int, isDay: Int): Int {
+// Get weather icon from weather code return from api
+fun getWeatherIcon(id: Int, isDay: Int): Int {
     when(id) {
         1000 -> {
             return if (isDay == 1) Sun.iconId else Moon.iconId

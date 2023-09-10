@@ -1,7 +1,6 @@
 package com.example.weatherapp.viewmodel
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.location.getCurrentLocation
@@ -41,7 +40,6 @@ class ForecastViewModel : ViewModel() {
                 )
             }
         }
-        Log.d(TAG, "getWeatherData: ")
     }
 
     fun getSettings(context: Context) {
@@ -55,7 +53,6 @@ class ForecastViewModel : ViewModel() {
             setState(pressureUnit, SettingsRepository.PRESSURE_UNIT)
             setState(temperatureUnit, SettingsRepository.TEMPERATURE_UNIT)
         }
-        Log.d("This is a log", "getSettings: ")
     }
 
     private fun setState(data: Int?, settingKey: String) {

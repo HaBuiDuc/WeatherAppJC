@@ -84,7 +84,6 @@ fun Hour.getTemp(
 }
 
 fun Day.getMaxTemp(
-    context: Context,
     settingsValue: Map<String, Int>
 ): String {
     return if (settingsValue[SettingsRepository.TEMPERATURE_UNIT] == MeasureUnit.Celsius.unit) {

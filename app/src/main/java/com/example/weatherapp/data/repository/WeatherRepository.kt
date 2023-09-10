@@ -5,6 +5,7 @@ import com.example.weatherapp.data.model.WeatherForecast
 import com.example.weatherapp.data.remote.RetrofitInstance
 
 class WeatherRepository {
+    // Get weather data from api
     suspend fun getWeatherData(q: String): WeatherDataDaily =
         RetrofitInstance.api.getWeatherData(q)
 

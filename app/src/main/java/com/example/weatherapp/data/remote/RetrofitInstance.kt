@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitInstance {
+    // Client for HttpLogging
     private val client = OkHttpClient
         .Builder()
         .addInterceptor(

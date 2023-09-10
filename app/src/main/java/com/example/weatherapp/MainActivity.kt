@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.ui.navigation.SetupNavGraph
-import com.example.weatherapp.ui.screens.settings_screen.SettingScreen
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +22,6 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     navHostController = rememberNavController()
                     SetupNavGraph(navController = navHostController)
-//                    SettingScreen()
                 }
             }
         }

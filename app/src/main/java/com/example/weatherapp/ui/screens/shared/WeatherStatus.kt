@@ -43,24 +43,6 @@ fun WeatherStatus(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth()
     ) {
-//        WeatherStatusItem(
-//            painter = painterResource(id = R.drawable.icon_wind),
-//            weatherInformation = windSpeed,
-//            modifier = itemModifier(LightMint),
-//            textColor = textColor
-//        )
-//        WeatherStatusItem(
-//            painter = painterResource(id = R.drawable.icon_water_drop),
-//            weatherInformation = "${humidity}%",
-//            modifier = itemModifier(PaleBlue),
-//            textColor = textColor
-//        )
-//        WeatherStatusItem(
-//            painter = painterResource(id = R.drawable.icon_sun_mini),
-//            weatherInformation = "${rain}%",
-//            modifier = itemModifier(SandyBeige),
-//            textColor = textColor
-//        )
         itemList.forEach {item ->
             WeatherStatusItem(statusItemData = item)
         }
