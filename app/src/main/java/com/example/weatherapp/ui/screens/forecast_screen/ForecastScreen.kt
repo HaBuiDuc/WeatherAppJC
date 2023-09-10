@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.weatherapp.R
+import com.example.weatherapp.ui.navigation.LOCATION_KEY
 import com.example.weatherapp.ui.theme.TextBoldStyle
 import com.example.weatherapp.viewmodel.ForecastViewModel
 
@@ -30,12 +31,16 @@ fun ForecastScreen(
     navController: NavController,
     viewModel: ForecastViewModel = viewModel(),
 ) {
+    val location = navController.currentBackStackEntry?.arguments?.getString(LOCATION_KEY)
     val context = LocalContext.current
     viewModel.getSettings(context)
     val forecastState by viewModel.state.collectAsState()
     val settingsValue = forecastState.settingValue
     if (!forecastState.isInitialize) {
-        viewModel.getForecastDate(context = context)
+        viewModel.getForecastDate(
+            context = context,
+            location = location
+        )
     }
     Scaffold(
         topBar = {

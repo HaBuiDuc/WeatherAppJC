@@ -38,7 +38,6 @@ fun TodayForecast(
 ) {
     Column {
         Row(
-
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()

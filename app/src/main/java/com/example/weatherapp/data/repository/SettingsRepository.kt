@@ -10,7 +10,7 @@ import com.example.weatherapp.data.MeasureUnit
 import kotlinx.coroutines.flow.first
 import kotlin.IllegalStateException
 
-class SettingsRepository private constructor() {
+class SettingsRepository private constructor(context: Context) {
     private val preferencesDefaults = mutableMapOf(
         WIND_SPEED_UNIT to MeasureUnit.KmPerHour.unit,
         VISIBILITY_UNIT to MeasureUnit.Km.unit,
@@ -46,9 +46,9 @@ class SettingsRepository private constructor() {
 
         private var INSTANCE: SettingsRepository? = null
 
-        fun initialize() {
+        fun initialize(context: Context) {
             if (INSTANCE == null) {
-                INSTANCE = SettingsRepository()
+                INSTANCE = SettingsRepository(context)
             }
         }
 

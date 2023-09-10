@@ -1,5 +1,6 @@
 package com.example.weatherapp.ui.screens.settings_screen
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -184,6 +185,16 @@ fun SettingItemView(
                 }
                 if (id != null) {
                     Text(text = stringResource(id = id))
+//                    Text(text = stringResource(id = settingValue[SettingsRepository.WIND_SPEED_UNIT]!!))
+//                    if (settingValue[SettingsRepository.WIND_SPEED_UNIT] == R.string.mph || settingValue[SettingsRepository.WIND_SPEED_UNIT] == R.string.kmh) {
+//                        Log.d("This is a log", "Equal ")
+//                    } else {
+//                        Log.d("This is a log", "id kmh: ${R.string.kmh}")
+//                        Log.d("This is a log", "id mph: ${R.string.mph}")
+//                        Log.d("This is a log", "setting value: ${settingValue[SettingsRepository.WIND_SPEED_UNIT]}")
+//                        Log.d("This is a log", "not Equal ")
+//                    }
+//                    Text(text = stringResource(id = R.string.mph))
                 }
                 Icon(
                     painter = painterResource(id = R.drawable.icon_unfold),

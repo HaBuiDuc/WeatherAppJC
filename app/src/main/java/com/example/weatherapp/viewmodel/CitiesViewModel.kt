@@ -22,6 +22,23 @@ class CitiesViewModel : ViewModel() {
             citiesRepository.saveLocation(context, data)
         }
     }
+    
+    fun getLocations(context: Context) {
+        viewModelScope.launch { 
+            citiesRepository.getLocations(context).collect {locations ->
+                _citiesState.value = _citiesState.value.copy(
+                    locationList = locations.toMutableList()
+                )
+            }
+        }
+        Log.d(TAG, "getLocations: ")
+    }
+
+    fun deleteLocation(context: Context, data: String) {
+        viewModelScope.launch {
+            citiesRepository.deleteLocation(context, data)
+        }
+    }
 
     fun getLocationPrediction(
         context: Context,

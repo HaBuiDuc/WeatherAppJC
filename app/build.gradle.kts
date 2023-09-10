@@ -88,4 +88,6 @@ dependencies {
     // Data store
     implementation ("androidx.datastore:datastore-preferences:1.0.0-alpha08")
 
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+
 }

@@ -20,11 +20,23 @@ class ForecastViewModel : ViewModel() {
     private val _state = MutableStateFlow(ForecastState())
     val state: StateFlow<ForecastState> = _state.asStateFlow()
 
-    fun getForecastDate(context: Context) {
-        getCurrentLocation(context) {
+    fun getForecastDate(
+        context: Context,
+        location: String? = null
+    ) {
+        if (location == null) {
+            getCurrentLocation(context) {
+                viewModelScope.launch {
+                    _state.value = ForecastState(
+                        repository.getWeatherForecast(it.getLocationValue()),
+                        isInitialize = true
+                    )
+                }
+            }
+        } else {
             viewModelScope.launch {
                 _state.value = ForecastState(
-                    repository.getWeatherForecast(it.getLocationValue()),
+                    repository.getWeatherForecast(location),
                     isInitialize = true
                 )
             }

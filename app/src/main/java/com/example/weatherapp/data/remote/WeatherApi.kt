@@ -13,7 +13,7 @@ interface WeatherApi {
         @Query("q") q: String
     ): WeatherDataDaily
 
-    @GET("forecast.json?key=$weatherApiKey&days=7")
+    @GET("forecast.json?key=$weatherApiKey&days=3")
     suspend fun getWeatherForecast(
         @Query("q") q: String
     ): WeatherForecast

@@ -6,6 +6,7 @@ import com.example.weatherapp.data.MeasureUnit
 import com.example.weatherapp.data.model.Current
 import com.example.weatherapp.data.model.Day
 import com.example.weatherapp.data.model.Hour
+import com.example.weatherapp.data.model.WeatherDataDaily
 import com.example.weatherapp.data.repository.SettingsRepository
 
 fun Hour.getHour(): String {
@@ -113,4 +114,8 @@ fun Day.getWindSpeed(
     } else {
         "${this.maxWindMph.toInt()}" + context.getString(MeasureUnit.MilePerHour.unit)
     }
+}
+
+fun WeatherDataDaily.getLocation(): String {
+    return "${this.location.name},${this.location.country}"
 }
