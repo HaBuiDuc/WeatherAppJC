@@ -88,9 +88,5 @@ fun Drawer(
                 }
             }
         }
-        Image(
-            painter = painterResource(id = R.drawable.drawer_bg),
-            contentDescription = stringResource(id = R.string.image_des)
-        )
     }
 }

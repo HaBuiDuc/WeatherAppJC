@@ -117,21 +117,20 @@ fun CityScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 LazyColumn {
-                    items(citiesState.locationList) { location ->
+                    items(citiesState.locationList.map { it.substringBefore(",") }) { location ->
                         CityItem(
                             location = location,
                             isSelectModeOn = isSelectModeOn,
                             onItemSelectedListener = { locationItem, isSelected ->
                                 if (isSelected) {
-                                    selectedItemLocation += locationItem
+                                    selectedItemLocation += citiesState.locationList.find { it.contains(locationItem) }!!
                                 } else {
-                                    selectedItemLocation -= locationItem
+                                    selectedItemLocation -= citiesState.locationList.find { it.contains(locationItem) }!!
                                 }
                             }
                         )
                     }
                 }
-
             }
             if (isSelectModeOn) {
                 Icon(
